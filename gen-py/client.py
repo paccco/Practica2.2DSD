@@ -9,11 +9,34 @@ transport = TTransport . TBufferedTransport ( transport )
 protocol = TBinaryProtocol . TBinaryProtocol ( transport )# creamos el cliente
 client = Calculadora . Client ( protocol )
 
-transport . open ()
+transport.open ()
 print (" Hacemos ping al server ")
-client . ping ()
-resultado = client . suma (1 , 1)
-print (" 1+1= "+ str ( resultado ))
-resultado = client . resta (1 , 1)
-print (" 1-1= "+ str ( resultado ))
+client.ping ()
+print("Que operacion desea realizar? + - x /")
+signo=input()
+
+if signo!='+' and signo!='-' and signo!='x' and signo!='/':
+    raise ValueError("Signo incorrecto")
+
+print("Con que digitos quieres operar?")
+num1=input("numero 1: ")
+num2=input("numero 2: ")
+
+num1=float(num1)
+num2=float(num2)
+
+if signo=='+':
+    resultado=client.suma(num1,num2)
+elif signo=='-':
+    resultado=client.resta(num1,num2)
+elif signo=='x':
+    resultado=client.multiplicacion(num1,num2)
+else:
+    if num2==0:
+        raise ValueError("No se puede dividir por 0")
+    else:
+        resultado=client.division(num1,num2)
+
+print(f"{num1}{signo}{num2} = {resultado}")
+
 transport . close ()

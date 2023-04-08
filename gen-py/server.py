@@ -28,11 +28,11 @@ class CalculadoraHandler :
         print (" restando "+ str ( n1 )+ " con "+ str( n2 ))
         return n1 - n2
     def multiplicacion ( self , n1 , n2 ):
-        print (" restando "+ str ( n1 )+ " con "+ str( n2 ))
-        return n1 - n2
+        print (" multiplicando "+ str ( n1 )+ " con "+ str( n2 ))
+        return n1 * n2
     def division ( self , n1 , n2 ):
-        print (" restando "+ str ( n1 )+ " con "+ str( n2 ))
-        return n1 - n2
+        print (" dividiendo "+ str ( n1 )+ " con "+ str( n2 ))
+        return n1 / n2
 
 if __name__ == "__main__":
     handler = CalculadoraHandler()
