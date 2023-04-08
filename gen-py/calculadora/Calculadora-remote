@@ -29,6 +29,9 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
     print('  double resta(double num1, double num2)')
     print('  double multiplicacion(double num1, double num2)')
     print('  double division(double num1, double num2)')
+    print('   sumaV( v1,  v2)')
+    print('   restaV( v1,  v2)')
+    print('   multiplicacionV( v1,  v2)')
     print('')
     sys.exit(0)
 
@@ -137,6 +140,24 @@ elif cmd == 'division':
         print('division requires 2 args')
         sys.exit(1)
     pp.pprint(client.division(eval(args[0]), eval(args[1]),))
+
+elif cmd == 'sumaV':
+    if len(args) != 2:
+        print('sumaV requires 2 args')
+        sys.exit(1)
+    pp.pprint(client.sumaV(eval(args[0]), eval(args[1]),))
+
+elif cmd == 'restaV':
+    if len(args) != 2:
+        print('restaV requires 2 args')
+        sys.exit(1)
+    pp.pprint(client.restaV(eval(args[0]), eval(args[1]),))
+
+elif cmd == 'multiplicacionV':
+    if len(args) != 2:
+        print('multiplicacionV requires 2 args')
+        sys.exit(1)
+    pp.pprint(client.multiplicacionV(eval(args[0]), eval(args[1]),))
 
 else:
     print('Unrecognized method %s' % cmd)

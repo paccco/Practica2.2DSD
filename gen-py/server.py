@@ -33,6 +33,22 @@ class CalculadoraHandler :
     def division ( self , n1 , n2 ):
         print (" dividiendo "+ str ( n1 )+ " con "+ str( n2 ))
         return n1 / n2
+    
+    #Definicion de calculadora vector
+
+    def sumaV ( self, v1 , v2 ):
+        resul=[v1[0]+v2[0],v1[1]+v2[1],v1[2]+v2[2]]
+        return resul
+    def restaV ( self, v1 , v2 ):
+        resul=[v1[0]-v2[0],v1[1]-v2[1],v1[2]-v2[2]]
+        return resul
+    def multiplicacionV ( self, v1 , v2 ):
+        a=v1[1]*v2[2]-v1[2]*v2[1]
+        b=-v1[0]*v2[2]-v1[2]*v2[0]
+        c=v1[0]*v2[1]-v1[1]*v2[0]
+        resul=[a,b,c]
+        return resul
+
 
 if __name__ == "__main__":
     handler = CalculadoraHandler()

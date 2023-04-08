@@ -46,5 +46,53 @@ if modo==0 :
             resultado=client.division(num1,num2)
 
     print(f"{num1}{signo}{num2} = {resultado}")
+elif modo==1 :
+    print("Que operacion desea realizar? + - x")
+    signo=input()
+
+    if signo!='+' and signo!='-' and signo!='x':
+        raise ValueError("Signo incorrecto")
+    
+    def toVector(cadena):
+        aux=cadena.find(',')
+        n1=float(cadena[0:aux])
+
+        cadena=cadena[aux+1:]
+
+        aux=cadena.find(',')
+        n2=float(cadena[0:aux])
+
+        cadena=cadena[aux+1:]
+
+        n3=float(cadena)
+
+        resul=[n1,n2,n3]
+
+        return resul
+    
+    def printVec(vector):
+        print(f"{vector[0]} {vector[1]} {vector[2]}")
+
+    print("Con que vectores quieres operar? Inserte los numeros segidos separados por comas sin espacios")
+    chain=input("Tamaño requerido de 3 --> ")
+
+    v1=toVector(chain)
+
+    chain=input("Tamaño requerido de 3 --> ")
+
+    v2=toVector(chain)
+
+    if signo=='+':
+        resultado=client.sumaV(v1,v2)
+    elif signo=='-':
+        resultado=client.restaV(v1,v2)
+    else:
+        resultado=client.multiplicacionV(v1,v2)
+
+    printVec(v1)
+    print(signo)
+    printVec(v2)
+    print("------- RESULTADO -------")
+    printVec(resultado)
 
 transport . close ()
