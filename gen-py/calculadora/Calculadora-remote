@@ -32,6 +32,9 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
     print('   sumaV( v1,  v2)')
     print('   restaV( v1,  v2)')
     print('   multiplicacionV( v1,  v2)')
+    print('   sumaM( m1,  m2)')
+    print('   restaM( m1,  m2)')
+    print('   multiplicacionM( m1,  m2)')
     print('')
     sys.exit(0)
 
@@ -158,6 +161,24 @@ elif cmd == 'multiplicacionV':
         print('multiplicacionV requires 2 args')
         sys.exit(1)
     pp.pprint(client.multiplicacionV(eval(args[0]), eval(args[1]),))
+
+elif cmd == 'sumaM':
+    if len(args) != 2:
+        print('sumaM requires 2 args')
+        sys.exit(1)
+    pp.pprint(client.sumaM(eval(args[0]), eval(args[1]),))
+
+elif cmd == 'restaM':
+    if len(args) != 2:
+        print('restaM requires 2 args')
+        sys.exit(1)
+    pp.pprint(client.restaM(eval(args[0]), eval(args[1]),))
+
+elif cmd == 'multiplicacionM':
+    if len(args) != 2:
+        print('multiplicacionM requires 2 args')
+        sys.exit(1)
+    pp.pprint(client.multiplicacionM(eval(args[0]), eval(args[1]),))
 
 else:
     print('Unrecognized method %s' % cmd)

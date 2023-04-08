@@ -7,5 +7,9 @@ service Calculadora{
 
     list<double> sumaV(1: list<double> v1 , 2: list<double> v2 ),
     list<double> restaV(1: list<double> v1 , 2: list<double> v2 ),
-    list<double> multiplicacionV(1: list<double> v1 , 2: list<double> v2 )
+    list<double> multiplicacionV(1: list<double> v1 , 2: list<double> v2 ),
+
+    list<list<double>> sumaM(1: list<list<double>> m1 , 2: list<list<double>> m2 ),
+    list<list<double>> restaM(1: list<list<double>> m1 , 2: list<list<double>> m2 ),
+    list<list<double>> multiplicacionM(1: list<list<double>> m1 , 2: list<list<double>> m2 )
 }

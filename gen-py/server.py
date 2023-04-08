@@ -48,7 +48,44 @@ class CalculadoraHandler :
         c=v1[0]*v2[1]-v1[1]*v2[0]
         resul=[a,b,c]
         return resul
+    
+    #Definicion de calculadora matrices
 
+    def sumaM ( self, m1 , m2 ):
+        resul=[
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ]
+        for i in range(3):
+            for j in range(3):
+                resul[i][j]=m1[i][j]+m2[i][j]
+
+        return resul
+    def restaM ( self, m1 , m2 ):
+        resul=[
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ]
+        for i in range(3):
+            for j in range(3):
+                resul[i][j]=m1[i][j]-m2[i][j]
+
+        return resul
+    def multiplicacionM ( self, m1 , m2 ):
+        resul=[
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ]
+
+        for i in range(3):
+            for j in range(3):
+                for k in range(3):
+                    resul[i][j]+=m1[i][k]*m2[k][j]
+
+        return resul
 
 if __name__ == "__main__":
     handler = CalculadoraHandler()

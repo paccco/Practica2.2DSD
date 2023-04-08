@@ -9,6 +9,26 @@ transport = TTransport . TBufferedTransport ( transport )
 protocol = TBinaryProtocol . TBinaryProtocol ( transport )# creamos el cliente
 client = Calculadora . Client ( protocol )
 
+def toVector(cadena):
+        aux=cadena.find(',')
+        n1=float(cadena[0:aux])
+
+        cadena=cadena[aux+1:]
+
+        aux=cadena.find(',')
+        n2=float(cadena[0:aux])
+
+        cadena=cadena[aux+1:]
+
+        n3=float(cadena)
+
+        resul=[n1,n2,n3]
+
+        return resul
+    
+def printVec(vector):
+    print(f"{vector[0]} {vector[1]} {vector[2]}")
+
 transport.open ()
 print (" Hacemos ping al server ")
 client.ping ()
@@ -52,28 +72,8 @@ elif modo==1 :
 
     if signo!='+' and signo!='-' and signo!='x':
         raise ValueError("Signo incorrecto")
-    
-    def toVector(cadena):
-        aux=cadena.find(',')
-        n1=float(cadena[0:aux])
 
-        cadena=cadena[aux+1:]
-
-        aux=cadena.find(',')
-        n2=float(cadena[0:aux])
-
-        cadena=cadena[aux+1:]
-
-        n3=float(cadena)
-
-        resul=[n1,n2,n3]
-
-        return resul
-    
-    def printVec(vector):
-        print(f"{vector[0]} {vector[1]} {vector[2]}")
-
-    print("Con que vectores quieres operar? Inserte los numeros segidos separados por comas sin espacios")
+    print("Con que vectores quieres operar? Inserte los numeros seguidos separados por comas sin espacios")
     chain=input("Tamaño requerido de 3 --> ")
 
     v1=toVector(chain)
@@ -94,5 +94,47 @@ elif modo==1 :
     printVec(v2)
     print("------- RESULTADO -------")
     printVec(resultado)
+
+else:
+    print("Que operacion desea realizar? + - x")
+    signo=input()
+
+    if signo!='+' and signo!='-' and signo!='x':
+        raise ValueError("Signo incorrecto")
+    
+    print("Con que matrices quieres operar? Inserte los numeros por filas seguidos separados por comas sin espacios")
+    cadena1=input("Primera fila : ")
+    cadena2=input("Segunda fila : ")
+    cadena3=input("Tercera fila : ")
+
+    m1=[toVector(cadena1),toVector(cadena2),toVector(cadena3)]
+
+    print("----- Segunda matriz ----")
+
+    cadena1=input("Primera fila : ")
+    cadena2=input("Segunda fila : ")
+    cadena3=input("Tercera fila : ")
+
+    m2=[toVector(cadena1),toVector(cadena2),toVector(cadena3)]
+
+    if signo=='+':
+        resultado=client.sumaM(m1,m2)
+    elif signo=='-':
+        resultado=client.restaM(m1,m2)
+    else:
+        resultado=client.multiplicacionM(m1,m2)
+
+    for f in m1:
+        printVec(f)
+
+    print(signo)
+
+    for f in m2:
+        printVec(f)
+
+    print("------- RESULTADO -------")
+    
+    for f in resultado:
+        printVec(f)
 
 transport . close ()
